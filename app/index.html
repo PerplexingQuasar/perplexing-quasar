@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DisplayBox</title>
+  <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+</head>
+<body>
+  <!-- Test Data -->
+  <script type="text/javascript" src="data/rowData.js"></script>
+  <script type="text/javascript" src="data/contentData.js"></script>
+
+  <!-- Models -->
+  <script type="text/javascript" src="models/RowModel.js"></script>
+  <script type="text/javascript" src="models/ContentModel.js"></script>
+
+
+  <!-- Collections -->
+  <script type="text/javascript" src="collections/RowCollection.js"></script>
+  <script type="text/javascript" src="collections/ContentCollection.js"></script>
+
+
+
+  <!-- Master App Model -->
+  <script type="text/javascript" src="models/AppModel.js"></script>
+
+  <!-- New App -->
+  <script>
+    $(function(){
+      var app = new AppModel();
+    });
+  </script>
+
+</body>
+</html>
