@@ -1,6 +1,7 @@
 
 var RowModel = Backbone.Model.extend({
   initialize: function(){
-    this.set('contentCollection', new ContentCollection(contentData) );
+    var row = data.content[this.get('id')];
+    this.set('contentCollection', new ContentCollection(row) );
   }
 });
