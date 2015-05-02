@@ -5,18 +5,22 @@
   <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+  <script type="text/javascript" src="bower_components/handlebars/handlebars.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
 <!-- Gallery -->
-  <div class='container'>
-    <div class='row'>
-      <h3>fantasy</h3>
-      <section class='gallery'>
-        <div class='content'></div>
-      </section>
-    </div>
-  </div>
+
+
+
+        <!-- <div class='row'>
+          <h3>{{this}}</h3>
+          /*<section class='gallery'>
+            // {{#each }}
+              <div class='content'></div>
+            // {{/each}}
+          </section>*/
+        </div> -->
 
   <!-- Test Data -->
   <script type="text/javascript" src="data/library.js"></script>
@@ -29,10 +33,17 @@
   <!-- Master App Model -->
   <script type="text/javascript" src="models/AppModel.js"></script>
 
+  <!-- Views -->
+  <script type="text/javascript" src="views/appView.js"></script>
+  <script type="text/javascript" src="views/contentView.js"></script>
+  <script type="text/javascript" src="views/popView.js"></script>
+  <script type="text/javascript" src="views/rowView.js"></script>
+
   <!-- New App -->
   <script>
     $(function(){
       var app = new AppModel();
+      var appView = new AppView({model:app});
     });
   </script>
 
