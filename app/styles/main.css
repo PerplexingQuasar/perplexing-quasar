@@ -1,0 +1,17 @@
+.row{
+  background-color: lightgrey;
+  height: 170px;
+
+}
+h3{
+  margin: 0 0 10px 15px;
+  padding: 10px 0 0 0;
+}
+
+.content{
+  background-color: red;
+  width: 70px;
+  height: 100px;
+  margin-left: 15px;
+  display: inline-block;
+}
