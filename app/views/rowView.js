@@ -1,6 +1,6 @@
 var RowView = Backbone.View.extend({
-
-  template: _.template("<div class='row'><h3><%- rowName %></h3><section class='gallery'></section></div>"),
+  className: "row",
+  template: _.template("<h3><%- rowName %></h3><section class='gallery'></section>"),
 
   initialize: function(){
     this.render();
@@ -8,14 +8,15 @@ var RowView = Backbone.View.extend({
 
   render: function() {
     var that = this;
+    this.$el.html(this.template( {rowName: this.model.get('name')} ) )
+
     this.model.get('contentCollection').each(function(content){
       var newContentView = new ContentView({model: content});
-      // console.log(newContentView.render());
-      that.$el.append(newContentView.render());
+      that.$(".gallery").append(newContentView.render());
     });
 
 
-    return this.$el.html(this.template( {rowName: this.model.get('name')} ) );
+    return this.$el;
   }
 
 });

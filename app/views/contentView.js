@@ -7,6 +7,6 @@ var ContentView = Backbone.View.extend({
   },
 
   render: function(){
-    return this.el;
+    return this.$el;
   }
 });
