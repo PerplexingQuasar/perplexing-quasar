@@ -1,5 +1,5 @@
 var ContentModel = Backbone.Model.extend({
-  popup: function(){
+  popup: function(e){
     this.trigger('popup', this);
   }
 });
