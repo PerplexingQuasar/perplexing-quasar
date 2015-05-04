@@ -1,7 +1,7 @@
 var AppView = Backbone.View.extend({
 
 
-  className: 'container',
+  className: 'container-fluid',
 
   initialize: function(){
     this.render();

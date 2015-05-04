@@ -1,6 +1,12 @@
+.container{
+  margin-left: 0;
+}
+
 .row{
   background-color: lightgrey;
-  height: 170px;
+  height: 308px;
+  position: relative;
+  /*border: 1px solid #999;*/
 
 }
 h3{
@@ -10,8 +16,65 @@ h3{
 
 .content{
   background-color: red;
-  width: 70px;
-  height: 100px;
+  width: 166px;
+  height: 236px;
   margin-left: 15px;
   display: inline-block;
+  z-index: -1;
+}
+
+#popup  {
+  width:313px;
+  height:282px;
+  background-color: #444;
+  position: absolute;
+  top: 267px;
+  left: 726px;
+  z-index: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+  display: auto;
+}
+
+#popup-header {
+  background-color: #444;
+  height: 42px;
+  color: #fff;
+  padding: 10px;
+}
+
+#popup-content {
+  background-color: #fff;
+  height: 220px;
+  padding: 10px;
+}
+
+
+
+
+.arrow-to-left {
+  top: 80px;
+  left: -30px;
+  position: relative;
+  width:  0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 30px solid #0ff;
+}
+
+.arrow-to-right {
+  top: 80px;
+  left: 313px;
+  position: relative;
+  width:  0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid #0ff;
 }
