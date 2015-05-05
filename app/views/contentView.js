@@ -15,6 +15,7 @@ var ContentView = Backbone.View.extend({
   },
 
   popup: function(e){
+    // Grab the event object and send to the model
     this.model.popup(e);
   }
 });

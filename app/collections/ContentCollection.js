@@ -3,9 +3,11 @@ var ContentCollection = Backbone.Collection.extend({
   model: ContentModel,
 
   initialize: function(){
-    this.on('popup', function(m){
-      // console.log(m);
-      var newPopView = new PopView({model: m});
+    // Listen to content model's popup event
+    this.on('popup', function(m, e){
+      // m -> model and e-> event object
+      // pass the event object as popview's property.
+      var newPopView = new PopView({model: m, evt: e});
     });
   }
 });
