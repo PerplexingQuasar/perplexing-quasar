@@ -1,7 +1,8 @@
 var PopView = Backbone.View.extend({
 
-  // className: 'hidden',
+  className: 'hidden',
   id: 'popup',
+
 
   template: _.template(
        "<span id='arrow'></span>" +
@@ -23,6 +24,21 @@ var PopView = Backbone.View.extend({
       popupContent: this.model.get('description')
     }));
 
+    this.fuck();
+
     $('body').append(this.$el);
+  },
+
+  fuck: function(){
+    // Grab the popup in the DOM
+    var $popup = $('#popup');
+
+    // Set up the function that will remove the .hidden class
+    var openPopup = function(e){
+      $popup.removeClass('hidden');
+    }
+
+    // the popup will open after 0.5 seconds
+    window.cancel = setTimeout(openPopup.bind(this, e), 500);
   }
 });
