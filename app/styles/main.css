@@ -2,7 +2,7 @@
   background-color: lightgrey;
   height: 308px;
   position: relative;
-  border: 1px solid #999;
+  /*border: 1px solid #999;*/
 
 }
 h3{
@@ -61,7 +61,7 @@ h3{
   height: 0;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-right: 30px solid #0ff;
+  border-right: 27px solid #0ff;
 }
 
 .arrow-to-right {
@@ -72,5 +72,5 @@ h3{
   height: 0;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-left: 30px solid #0ff;
+  border-left: 27px solid #0ff;
 }

@@ -3,6 +3,11 @@ var PopView = Backbone.View.extend({
   className: 'hidden',
   id: 'popup',
 
+  events: {
+    'mouseenter': 'enter',
+    'mouseleave': 'leave'
+  },
+
 
   template: _.template(
        "<span id='arrow'></span>" +
@@ -50,6 +55,9 @@ var PopView = Backbone.View.extend({
 
     // Define the css object that contains the position of the Popup
     var cssObj={};
+    // Define the size of the arrow
+    var arrowWidth = 27;
+
 
     //offset.left is the location of the left edge of the div relative to the window
     //offset.top is the location of the top edge of the div relative to the window
@@ -62,7 +70,7 @@ var PopView = Backbone.View.extend({
     var popWidth = $popup.width();
 
     //calculate the right edge of the popup (30 is the width of the popup's arrow)
-    var popRightEdge = offset.left + offset.width + popWidth + 30 ;
+    var popRightEdge = offset.left + offset.width + popWidth + arrowWidth ;
 
     //if the popup will appear off the right edge of the screen
     if( popRightEdge > window.innerWidth){
@@ -70,7 +78,7 @@ var PopView = Backbone.View.extend({
 
       //define popup positions
       cssObj.top = offset.top + 25;
-      cssObj.left = offset.left - 30 - popWidth;
+      cssObj.left = offset.left - arrowWidth - popWidth;
 
       //orient the arrow to point the right way
       $('#arrow').removeClass('arrow-to-left');
@@ -85,21 +93,50 @@ var PopView = Backbone.View.extend({
 
       //define the popup positions
       cssObj.top = offset.top + 25;
-      cssObj.left = offset.left + 30 + offset.width;
+      cssObj.left = offset.left + arrowWidth + offset.width;
 
       //orient the arrow to point the right way
       $('#arrow').removeClass('arrow-to-right');
       $('#arrow').addClass('arrow-to-left');
 
       //shift the arrow to the left-hand side of the popup by arrow width
-      $('#arrow').css({ left: -30 });
+      $('#arrow').css({ left: -arrowWidth });
     }
 
     // Set the position of the Popup
     $popup.css(cssObj);
 
     // EVENT LISTENERS
+    // console.log($(e.currentTarget));
+    // $('.content').on('mouseleave', function(e){
 
+    //   e.preventDefault();
+    //   // If your mouse leaves the content before the popup appears, don't show the popup
+    //   clearInterval(window.cancel);
+
+    //   // After the mouse leaves the content box, make the popup disappear after X seconds.
+    //   // this event is only cancelled if the mouse enters the popup box
+    //   window.cancelPop = setTimeout(function(){
+    //     // Hide the popup
+    //     $('#popup').remove();
+    //   }, 800);
+
+    // });
+
+    // Cancel the hide popup event. ()
+    // $('#popup').on('mouseenter', function(e) {
+
+    //   clearInterval(window.cancelPop);
+    // });
 
   }
+
+  // enter: function(){
+  //   console.log('ENTERED!!');
+  // },
+  // leave: function(){
+
+  //   console.log('LEFT!!');
+  // }
+
 });
