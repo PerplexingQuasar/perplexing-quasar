@@ -106,37 +106,23 @@ var PopView = Backbone.View.extend({
     // Set the position of the Popup
     $popup.css(cssObj);
 
-    // EVENT LISTENERS
-    // console.log($(e.currentTarget));
-    // $('.content').on('mouseleave', function(e){
-
-    //   e.preventDefault();
-    //   // If your mouse leaves the content before the popup appears, don't show the popup
-    //   clearInterval(window.cancel);
-
-    //   // After the mouse leaves the content box, make the popup disappear after X seconds.
-    //   // this event is only cancelled if the mouse enters the popup box
-    //   window.cancelPop = setTimeout(function(){
-    //     // Hide the popup
-    //     $('#popup').remove();
-    //   }, 800);
-
-    // });
-
-    // Cancel the hide popup event. ()
-    // $('#popup').on('mouseenter', function(e) {
-
-    //   clearInterval(window.cancelPop);
-    // });
-
+    //EVENT LISTENERS on contentview
+    $(e.currentTarget).on('mouseleave', function(e){
+      e.preventDefault();
+      window.watch.start();
+    });
+    $(e.currentTarget).on('mouseenter', function(e){
+      e.preventDefault();
+      window.watch.reset();
+    });
+  },
+  //functions triggered by events on popupview
+  enter: function(){
+    window.watch.reset();
+    console.log("entered popup");
+  },
+  leave: function(){
+    window.watch.start();
+    console.log("left popup");
   }
-
-  // enter: function(){
-  //   console.log('ENTERED!!');
-  // },
-  // leave: function(){
-
-  //   console.log('LEFT!!');
-  // }
-
 });
