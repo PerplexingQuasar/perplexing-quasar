@@ -1,12 +1,8 @@
-.container{
-  margin-left: 0;
-}
-
 .row{
   background-color: lightgrey;
   height: 308px;
   position: relative;
-  /*border: 1px solid #999;*/
+  border: 1px solid #999;
 
 }
 h3{
@@ -18,7 +14,7 @@ h3{
   background-color: red;
   width: 166px;
   height: 236px;
-  margin-left: 15px;
+  margin-left: 27px;
   display: inline-block;
   z-index: -1;
 }
