@@ -61,7 +61,6 @@ var AppView = Backbone.View.extend({
     // Increment seconds to the cronometer
     this.addTime = function(){
         this.currentTime += cycleTime;
-        console.log(this.currentTime);
         if (this.currentTime >= this.timeLimit ) {
           this.do();
         }
