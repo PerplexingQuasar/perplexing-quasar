@@ -1,10 +1,13 @@
 .row{
   background-color: lightgrey;
   height: 308px;
-  position: relative;
+}
+
+/*.gallery{
   overflow: auto;
   white-space: nowrap;
-}
+}*/
+
 h3{
   margin: 0 0 10px 15px;
   padding: 10px 0 0 0;
