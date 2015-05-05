@@ -26,6 +26,6 @@ dist/
 # Deployed apps should consider commenting these lines out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules/
-app/bower_components/
+app/lib/bower_components/
 app/.DS_STORE
 
