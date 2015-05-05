@@ -57,7 +57,8 @@
 
       $('.gallery').smoothDivScroll({
         manualContinuousScrolling: true
-      });
+      }).smoothDivScroll('move', 100).smoothDivScroll('move', -100);
+      // $('.gallery').scrollLeft($('.gallery').scrollLeft()-100);
 
     });
   </script>
