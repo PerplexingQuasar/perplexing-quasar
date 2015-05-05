@@ -10,13 +10,13 @@ var PopView = Backbone.View.extend({
        "<div id='popup-content'><%- popupContent %></div>"
     ),
 
-  initialize: function(){
-
+  initialize: function(options){
     this.render();
+    this.fuck(options.event);
   },
 
   render: function() {
-    //Removes previous popup if exists
+    //Removes previous popup if one exists
     $('#popup').remove();
 
     this.$el.html( this.template({
@@ -24,12 +24,10 @@ var PopView = Backbone.View.extend({
       popupContent: this.model.get('description')
     }));
 
-    this.fuck();
-
     $('body').append(this.$el);
   },
 
-  fuck: function(){
+  fuck: function(e){
     // Grab the popup in the DOM
     var $popup = $('#popup');
 
