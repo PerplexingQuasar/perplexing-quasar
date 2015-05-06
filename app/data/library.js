@@ -1,4 +1,11 @@
 var data ={
+  cssStyle: null,
+
+  settings: {
+    contentWidth: 166, 
+    contentHeight: 233
+  },
+
   header: [
     {id: 001, name: 'fantasy'},
     {id: 002, name: 'romance'},

@@ -1,8 +1,4 @@
-.header-buffer{
-  height: 75px;
-  z-index: -1;
-  background-color: lightgrey;
-}
+
 
 #display-title{
   font-size: 25px;
