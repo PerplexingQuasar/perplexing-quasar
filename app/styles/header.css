@@ -1,0 +1,35 @@
+.header-buffer{
+  height: 75px;
+  z-index: -1;
+  background-color: lightgrey;
+}
+
+#display-title{
+  font-size: 25px;
+  display: inline-block;
+  position: relative;
+  top: 0%;
+  left: 1%;
+}
+
+#displaybase{
+  color: red;
+}
+#js{
+  color: white;
+}
+
+.headroom {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    transition: transform 200ms linear;
+    position: fixed;
+    z-index: 6;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}

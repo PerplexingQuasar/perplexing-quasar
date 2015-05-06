@@ -5,18 +5,96 @@ var AppView = Backbone.View.extend({
 
   initialize: function(){
     this.render();
+    window.watch = new this.Watch(100,1000,function(){
+      $('#popup').remove();
+      window.watch.reset();
+    });
+
+    /////////////////////////////////////////////////
+    //Initialize and set options for our header
+    /////////////////////////////////////////////////
+    //play with options
+    Headroom.options.offset = 40;
+    Headroom.options.tolerance = {
+      down: 5,
+      up: 50
+    };
+    //asign the headroom to the DOM element.
+    $(".headroom").headroom();
+
+    /////////////////////////////////////////////////
+    //Initialize SmoothDivScroll to the DOM element
+    /////////////////////////////////////////////////
+    $('.gallery').smoothDivScroll({
+        manualContinuousScrolling: true
+      }).smoothDivScroll('move', 30).smoothDivScroll('move', -30);
   } ,
 
   render: function() {
     var that = this;
     this.model.get('rowCollection').each(function(row){
-      var newRowView = new RowView({model: row})
+      var newRowView = new RowView({model: row});
       that.$el.append(newRowView.render());
     });
 
+    $body = $('body');
+    $body.empty();
     // Append into the DOM
-    $('body').empty().append( this.$el );
+    $body.append( this.$el );
 
+    //Add header
+    $('.container-fluid').prepend('<div class="header-buffer"></div>');
+    var newHeaderView = new HeaderView();
+    $('.header-buffer').append(newHeaderView.render());
+
+
+
+
+//this.watch = new this.Watch(100,5000,function(){console.log(this.currentTime);});
+  },
+  //make a timer for the popup
+  Watch: function(cycleTime, timeLimit, callback) {
+    // Define the global variable with the total time
+    this.currentTime = 0;
+    this.timeLimit =  timeLimit || 3000;
+
+    // Variable responsible by defining whether the cronometer is on or not
+    var interval;
+
+    // Start the cronometer
+    this.start = function(){
+        if (!interval){
+            interval = setInterval(this.addTime.bind(this), cycleTime || 500);
+        }
+      };
+
+    // Stop the cronometer
+    this.stop = function(){
+        if (interval){
+          clearInterval(interval);
+          interval = null;
+        }
+        return this;
+      };
+
+    // Reset the cronometer
+    this.reset = function(){
+        this.currentTime = 0;
+        this.stop();
+        return this;
+      };
+
+    this.do = function(){
+      callback();
+    };
+
+    // Increment seconds to the cronometer
+    this.addTime = function(){
+        this.currentTime += cycleTime;
+        if (this.currentTime >= this.timeLimit ) {
+          this.do();
+        }
+      };
   }
 });
 
