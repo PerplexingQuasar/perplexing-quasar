@@ -34,7 +34,9 @@ var AppView = Backbone.View.extend({
     //arguement should be a string, name of css file. 
     this.loadCSS(data.cssStyle); 
 
-    $('.content').css({
+    //Apply the settings value from data to the css. 
+    $('.content').css({ //for all DOM element of class '.content'
+      //create property/change values
       'width': data.settings.contentWidth + 'px',
       'height': data.settings.contentHeight + 'px'
     });
