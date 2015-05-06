@@ -14,7 +14,7 @@ div.scrollingHotSpotLeft
 	background-repeat: repeat;
 	background-position: center center;
 	position: absolute;
-	z-index: 200;
+	z-index: 5;
 	left: 0;
 	/*  The first url is for Firefox and other browsers, the second is for Internet Explorer */
 	cursor: url(../images/cursors/cursor_arrow_left.png), url(../images/cursors/cursor_arrow_left.cur),w-resize;
@@ -42,7 +42,7 @@ div.scrollingHotSpotRight
 	background-repeat: repeat;
 	background-position: center center;
 	position: absolute;
-	z-index: 200;
+	z-index: 5;
 	right: 0;
 	cursor: url(../images/cursors/cursor_arrow_right.png), url(../images/cursors/cursor_arrow_right.cur),e-resize;
 }

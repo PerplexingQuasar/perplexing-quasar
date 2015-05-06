@@ -1,16 +1,18 @@
+.container-fluid{
+  background-color: lightgrey;
+  padding-left: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
 .row{
   background-color: lightgrey;
   height: 308px;
 }
 
-/*.gallery{
-  overflow: auto;
-  white-space: nowrap;
-}*/
-
 h3{
+  font-weight: bold;
   margin: 0 0 10px 15px;
-  padding: 10px 0 0 0;
+  padding: 10px 0 0 15px;
 }
 
 .content{
@@ -81,3 +83,5 @@ border-radius: 15px;
   border-bottom: 20px solid transparent;
   border-left: 27px solid #0ff;
 }
+
+
