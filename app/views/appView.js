@@ -9,6 +9,25 @@ var AppView = Backbone.View.extend({
       $('#popup').remove();
       window.watch.reset();
     });
+
+    /////////////////////////////////////////////////
+    //Initialize and set options for our header
+    /////////////////////////////////////////////////
+    //play with options
+    Headroom.options.offset = 40;
+    Headroom.options.tolerance = {
+      down: 5,
+      up: 50
+    };
+    //asign the headroom to the DOM element.
+    $(".headroom").headroom();
+
+    /////////////////////////////////////////////////
+    //Initialize SmoothDivScroll to the DOM element
+    /////////////////////////////////////////////////
+    $('.gallery').smoothDivScroll({
+        manualContinuousScrolling: true
+      }).smoothDivScroll('move', 30).smoothDivScroll('move', -30);
   } ,
 
   render: function() {
@@ -18,8 +37,19 @@ var AppView = Backbone.View.extend({
       that.$el.append(newRowView.render());
     });
 
+    $body = $('body');
+    $body.empty()
     // Append into the DOM
-    $('body').empty().append( this.$el );
+    $body.append( this.$el );
+
+    //Add header
+    $('.container-fluid').prepend('<div class="header-buffer"></div>');
+    var newHeaderView = new HeaderView();
+    $('.header-buffer').append(newHeaderView.render());
+
+
+
+
 //this.watch = new this.Watch(100,5000,function(){console.log(this.currentTime);});
   },
   //make a timer for the popup
