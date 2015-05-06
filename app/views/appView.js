@@ -33,12 +33,12 @@ var AppView = Backbone.View.extend({
   render: function() {
     var that = this;
     this.model.get('rowCollection').each(function(row){
-      var newRowView = new RowView({model: row})
+      var newRowView = new RowView({model: row});
       that.$el.append(newRowView.render());
     });
 
     $body = $('body');
-    $body.empty()
+    $body.empty();
     // Append into the DOM
     $body.append( this.$el );
 
