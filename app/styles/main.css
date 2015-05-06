@@ -4,6 +4,12 @@
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.header-buffer{
+  height: 75px;
+  z-index: -1;
+  background-color: lightgrey;
+}
+
 .row{
   background-color: lightgrey;
   height: 308px;
@@ -17,8 +23,8 @@ h3{
 
 .content{
   background-color: red;
-  width: 166px;
-  height: 233px;
+/*  width: 166px;
+  height: 233px;*/
   margin: 10px 13px 10px 13px;
   /*margin-left: 27px;*/
   display: inline-block;

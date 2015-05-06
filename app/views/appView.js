@@ -28,7 +28,17 @@ var AppView = Backbone.View.extend({
     $('.gallery').smoothDivScroll({
         manualContinuousScrolling: true
       }).smoothDivScroll('move', 30).smoothDivScroll('move', -30);
-  } ,
+
+
+    //Here we create append the link element to the html for dynamic css style types.
+    //arguement should be a string, name of css file. 
+    this.loadCSS(data.cssStyle); 
+
+    $('.content').css({
+      'width': data.settings.contentWidth + 'px',
+      'height': data.settings.contentHeight + 'px'
+    });
+  },
 
   render: function() {
     var that = this;
@@ -95,6 +105,23 @@ var AppView = Backbone.View.extend({
           this.do();
         }
       };
+  },
+
+  loadCSS: function (style){
+    //simple check if that css is loaded/exists already
+    if(!document.getElementById(style + '-css')){
+      //Get the head
+      var head = document.getElementsByTagName('head')[0];
+      //create the link DOM element
+      var link  = document.createElement('link');
+      //assign information to new link
+      link.id   = style + '-css'; //the element id
+      link.rel  = 'stylesheet';  //a stylesheet
+      link.type = 'text/css';   //of type css
+      link.href = 'styles/' + style + '.css'; //the url path to that css file
+      //finally, append new link to the head
+      head.appendChild(link);
+    }
   }
 });
 
