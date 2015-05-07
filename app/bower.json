@@ -16,7 +16,6 @@
   "dependencies": {
     "backbone": "~1.1.2",
     "jquery": "~2.1.4",
-    "handlebars": "~3.0.3",
     "bootstrap": "~3.3.4"
   }
 }
