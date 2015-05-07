@@ -1,4 +1,4 @@
-var data = require('data-example.json');
+// var data = require('data-example.json');
 // 
 // name
 // description
@@ -58,6 +58,6 @@ var filter = function(lib, category) {
 	return newData;
 }
 
-var content = filter(data);
+module.exports = filter;
 
 
