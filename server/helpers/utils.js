@@ -1,15 +1,16 @@
 var Promise = require("bluebird");
-var Vimeo   = require("../integrations/vimeo/requestVimeo"); 
+var Vimeo   = require("../integrations/vimeo/request-vimeo"); 
+var filter  = require("../integrations/vimeo/filter-vimeo");
 
-exports.makeRequest = function(cb){
+exports.makeRequest = function(cb, category){
 	// make the request
 	Vimeo.request(/*options*/{
 	        // This is the path for the videos contained within the staff picks channels
-	        path : '/channels/staffpicks/videos',
+	        path : '/categories/' + category + '/videos',
 	        // This adds the parameters to request page two, and 10 items per page
 	        query : {
-	            page : 2,
-	            per_page : 10
+	            page : 1,
+	            per_page : 20
 	        }
 	    }, /*callback*/function (error, body, status_code, headers) {
 	        if (error) {
@@ -27,7 +28,7 @@ exports.makeRequest = function(cb){
 
 }
 
-exports.createJSON = function(header, target){
+exports.createJSON = function(req, res, header, target){
 
 	var prom = new Promise(function(resolve, reject) {
 
@@ -37,11 +38,15 @@ exports.createJSON = function(header, target){
 		 	} else {
 		   	    reject('nooooo');
 		 	}
-		});
+		}, header[0]);
 	});
 	 
 	prom.then(function(data) {
-	        console.log(data);
+			// Filter the data returned from the server.
+	        
+
+	        var dataFiltered = filter(data);
+	        res.status(200).json({ length: dataFiltered.length, results: dataFiltered});
 	    })
 	    .catch(function(e) {
 	        console.log('error: ' + e);

@@ -10,7 +10,7 @@ var vimeoHeader  = require('../integrations/integration-headers').vimeo;
 router.get('/', function(req, res, next) {
   
   // invoke the createJSON function to return the data to the client (data, target)
-  var data = utils.createJSON(vimeoHeader, 'vimeo');
+  var data = utils.createJSON(req, res, vimeoHeader, 'vimeo');
   // res.status(200).json({results: data});
 });
 
