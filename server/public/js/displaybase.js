@@ -1,5 +1,6 @@
 var AppModel = Backbone.Model.extend({
   initialize: function(){
+    console.log(window.data);
     this.set('rowCollection', new RowCollection(data.header) );
     // console.dir(this.get('rowCollection'));
   }
@@ -66,6 +67,13 @@ var AppView = Backbone.View.extend({
     //asign the headroom to the DOM element.
     $(".headroom").headroom();
 
+    //Apply the settings value from data to the css. 
+    $('.content').css({ //for all DOM element of class '.content'
+      //create property/change values
+      'width': data.settings.contentWidth + 'px',
+      'height': data.settings.contentHeight + 'px'
+    });
+
     /////////////////////////////////////////////////
     //Initialize SmoothDivScroll to the DOM element
     /////////////////////////////////////////////////
@@ -76,14 +84,9 @@ var AppView = Backbone.View.extend({
 
     //Here we create append the link element to the html for dynamic css style types.
     //arguement should be a string, name of css file. 
-    this.loadCSS(data.cssStyle); 
+    //this.loadCSS(data.cssStyle); 
 
-    //Apply the settings value from data to the css. 
-    $('.content').css({ //for all DOM element of class '.content'
-      //create property/change values
-      'width': data.settings.contentWidth + 'px',
-      'height': data.settings.contentHeight + 'px'
-    });
+
   },
 
   render: function() {
@@ -181,7 +184,7 @@ var ContentView = Backbone.View.extend({
         //Git url link for the content
         '<a class="content-link" href=<%- contentUrl %>>' +
           //Give alt and src data
-          '<img class="img" alt=<%- title %> src=<%- imgUrl %>>' +
+          '<img class="img" src=<%- imgUrl %>>' +
         '</a>' +
       '</span>'
     ),
@@ -198,7 +201,7 @@ var ContentView = Backbone.View.extend({
     this.$el.html( this.template({
       title: this.model.get('title'), 
       imgUrl: this.model.get('thumbnail'),
-      contentUrl: 'http://www.something.com'
+      contentUrl: this.model.get('link')
     }) );
 
     return this.$el;
@@ -389,288 +392,3 @@ var RowView = Backbone.View.extend({
   }
 
 });
-
-var data ={
-  cssStyle: null,
-
-  settings: {
-    contentWidth: 166, 
-    contentHeight: 233
-  },
-
-  header: [
-    {name: 'fantasy'},
-    {name: 'romance'},
-    {name: 'comedy'},
-    {name: 'horror'}
-  ],
-
-  content:{
-    'fantasy': [
-      {
-        thumbnail: 'assets/imgs/10870002.webp',
-        title: "AAAAAAAAAAAAAAAAAAAAAAAAA",
-        description: "aaaaaaaaaaaaaaaaaaaaaaaaa"
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "BBBBBBBBBBB",
-        description: "bbbbbbbbbbbbbbbbbbbbb",
-      },
-      {
-        thumbnail: 'assets/imgs/10922155.webp',
-        title: "CCCCCCCC",
-        description: "cccccccccccccccccccc",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      },
-      {
-        thumbnail: 'assets/imgs/10870002.webp',
-        title: "AAAAAAAAAAAAAAAAAAAAAAAAA",
-        description: "aaaaaaaaaaaaaaaaaaaaaaaaa"
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "BBBBBBBBBBB",
-        description: "bbbbbbbbbbbbbbbbbbbbb",
-      },
-      {
-        thumbnail: 'assets/imgs/10922155.webp',
-        title: "CCCCCCCC",
-        description: "cccccccccccccccccccc",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      },
-      {
-        thumbnail: 'assets/imgs/10870002.webp',
-        title: "AAAAAAAAAAAAAAAAAAAAAAAAA",
-        description: "aaaaaaaaaaaaaaaaaaaaaaaaa"
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "BBBBBBBBBBB",
-        description: "bbbbbbbbbbbbbbbbbbbbb",
-      },
-      {
-        thumbnail: 'assets/imgs/10922155.webp',
-        title: "CCCCCCCC",
-        description: "cccccccccccccccccccc",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      }
-    ],
-    'romance': [
-      {
-        thumbnail: 'assets/imgs/11097186.webp',
-        title: "EEEEEEEEEE",
-        description: "eeeeeeeeeeeeeeeeee"
-      },
-      {
-        thumbnail: 'assets/imgs/11138752.webp',
-        title: "AFFFFFFFFFFFF",
-        description: "fffffffffffffffffffff",
-      },
-      {
-        thumbnail: 'assets/imgs/11186363.webp',
-        title: "GGGGG",
-        description: "gggggggggggggggggg",
-      },
-      {
-        thumbnail: 'assets/imgs/11312322.webp',
-        title: "HHHHHHHHHHHHHHHH",
-        description: "hhhhhhhhhhhhhhhhhhh",
-      },
-      {
-        thumbnail: 'assets/imgs/11138752.webp',
-        title: "AFFFFFFFFFFFF",
-        description: "fffffffffffffffffffff",
-      },
-      {
-        thumbnail: 'assets/imgs/11186363.webp',
-        title: "GGGGG",
-        description: "gggggggggggggggggg",
-      },
-      {
-        thumbnail: 'assets/imgs/11312322.webp',
-        title: "HHHHHHHHHHHHHHHH",
-        description: "hhhhhhhhhhhhhhhhhhh",
-      },
-      {
-        thumbnail: 'assets/imgs/11138752.webp',
-        title: "AFFFFFFFFFFFF",
-        description: "fffffffffffffffffffff",
-      },
-      {
-        thumbnail: 'assets/imgs/11186363.webp',
-        title: "GGGGG",
-        description: "gggggggggggggggggg",
-      },
-      {
-        thumbnail: 'assets/imgs/11312322.webp',
-        title: "HHHHHHHHHHHHHHHH",
-        description: "hhhhhhhhhhhhhhhhhhh",
-      },
-      {
-        thumbnail: 'assets/imgs/11312322.webp',
-        title: "HHHHHHHHHHHHHHHH",
-        description: "hhhhhhhhhhhhhhhhhhh",
-      },
-      {
-        thumbnail: 'assets/imgs/11138752.webp',
-        title: "AFFFFFFFFFFFF",
-        description: "fffffffffffffffffffff",
-      },
-      {
-        thumbnail: 'assets/imgs/11186363.webp',
-        title: "GGGGG",
-        description: "gggggggggggggggggg",
-      },
-      {
-        thumbnail: 'assets/imgs/11312322.webp',
-        title: "HHHHHHHHHHHHHHHH",
-        description: "hhhhhhhhhhhhhhhhhhh",
-      }
-    ],
-    'comedy': [
-      {
-        thumbnail: 'assets/imgs/11379424.webp',
-        title: "IIIIIIIIIIII",
-        description: "iiiiiiiiiiiiiiiiiii"
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "JJJJJJJJJJ",
-        description: "jjjjjjjjjjjjjjjjj",
-      },
-      {
-        thumbnail: 'assets/imgs/11169737.webp',
-        title: "KKKKKKKK",
-        description: "kkkkkkkkkkkkkkkk",
-      },
-      {
-        thumbnail: 'assets/imgs/11347665.webp',
-        title: "LLLL",
-        description: "llllllllllllllllll",
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "JJJJJJJJJJ",
-        description: "jjjjjjjjjjjjjjjjj",
-      },
-      {
-        thumbnail: 'assets/imgs/11169737.webp',
-        title: "KKKKKKKK",
-        description: "kkkkkkkkkkkkkkkk",
-      },
-      {
-        thumbnail: 'assets/imgs/11347665.webp',
-        title: "LLLL",
-        description: "llllllllllllllllll",
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "JJJJJJJJJJ",
-        description: "jjjjjjjjjjjjjjjjj",
-      },
-      {
-        thumbnail: 'assets/imgs/11169737.webp',
-        title: "KKKKKKKK",
-        description: "kkkkkkkkkkkkkkkk",
-      },
-      {
-        thumbnail: 'assets/imgs/11347665.webp',
-        title: "LLLL",
-        description: "llllllllllllllllll",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      },
-      {
-        thumbnail: 'assets/imgs/10870002.webp',
-        title: "AAAAAAAAAAAAAAAAAAAAAAAAA",
-        description: "aaaaaaaaaaaaaaaaaaaaaaaaa"
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "BBBBBBBBBBB",
-        description: "bbbbbbbbbbbbbbbbbbbbb",
-      },
-      {
-        thumbnail: 'assets/imgs/10922155.webp',
-        title: "CCCCCCCC",
-        description: "cccccccccccccccccccc",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      },
-      {
-        thumbnail: 'assets/imgs/10870002.webp',
-        title: "AAAAAAAAAAAAAAAAAAAAAAAAA",
-        description: "aaaaaaaaaaaaaaaaaaaaaaaaa"
-      },
-      {
-        thumbnail: 'assets/imgs/10885177.webp',
-        title: "BBBBBBBBBBB",
-        description: "bbbbbbbbbbbbbbbbbbbbb",
-      },
-      {
-        thumbnail: 'assets/imgs/10922155.webp',
-        title: "CCCCCCCC",
-        description: "cccccccccccccccccccc",
-      },
-      {
-        thumbnail: 'assets/imgs/11094053.webp',
-        title: "DDDDDDDD",
-        description: "dddddddddddddd",
-      }
-    ],
-    'horror': [
-      {
-        thumbnail: 'assets/imgs/11570147.webp',
-        title: "OMMMMMMM",
-        description: "mmmmmmmmmmmmmm"
-      },
-      {
-        thumbnail: 'assets/imgs/12144477.webp',
-        title: "NNNNNN",
-        description: "nnnnnnnnnnnnnnn",
-      },
-      {
-        thumbnail: 'assets/imgs/12041630.webp',
-        title: "OOOOOO",
-        description: "oooooooo",
-      },
-      {
-        thumbnail: 'assets/imgs/11969751.webp',
-        title: "PPPPPP",
-        description: "pppppppppp",
-      }
-    ]
-
-  } //content
-}//data
-
-
