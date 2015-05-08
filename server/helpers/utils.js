@@ -1,6 +1,8 @@
 var Promise = require("bluebird");
 var Vimeo   = require("../integrations/vimeo/request-vimeo"); 
 var filter  = require("../integrations/vimeo/filter-vimeo");
+// var mongoose = require('mongoose');
+var RequestApi = require('../models/model.js');
 
 exports.makeRequest = function(category, callback){
 	
@@ -44,7 +46,24 @@ exports.multipleRequests = function(categories, resultJSON, res){
               })
               .catch(function(e){ console.log('error:', e); });
   }).then(function(dataArray) {
-      res.status(200).json({results: resultJSON});
+      // res.status(200).json({results: resultJSON});
+      var dataString = JSON.stringify(resultJSON);
+      
+      // Create the new request model
+      var newRequestApi = new RequestApi({
+        data: dataString,
+        api: 'Vimeo'
+      });
+
+      // Save the model into the DB
+      newRequestApi.save(function(err, result){
+        if (err) { 
+          console.log('Failed to save the request in the Database');
+        } else {
+          console.log('Request successfuly saved in the Database ');
+        }
+      });
+
   }).catch(SyntaxError, function(e) {
      console.log("Invalid JSON in file " + e.fileName + ": " + e.message);
   });
