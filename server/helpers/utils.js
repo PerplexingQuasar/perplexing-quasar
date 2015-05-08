@@ -2,53 +2,42 @@ var Promise = require("bluebird");
 var Vimeo   = require("../integrations/vimeo/request-vimeo"); 
 var filter  = require("../integrations/vimeo/filter-vimeo");
 
-exports.makeRequest = function(cb, category){
-	// make the request
-	Vimeo.request(/*options*/{
-	        // This is the path for the videos contained within the staff picks channels
-	        path : '/categories/' + category + '/videos',
-	        // This adds the parameters to request page two, and 10 items per page
-	        query : {
-	            page : 1,
-	            per_page : 20
-	        }
-	    }, /*callback*/function (error, body, status_code, headers) {
-	        if (error) {
-	            console.log('error');
-	            console.log(error);
-	        } else {
-	            cb(body);
-	        }
+exports.makeRequest = function(category, callback){
+	
+	// Create the query to fetch the Vimeo API
+	var queryObj = {
+		path : '/categories/' + category + '/videos',
+		query : { page : 1, per_page : 20 }
+	}
 
-	        console.log('status code');
-	        console.log(status_code);
-	        console.log('headers');
-	        console.log(headers);
+	// Request the Vimeo API
+	Vimeo.request(queryObj, function (error, body, status_code, headers) {
+	        if (error) {
+	            console.log('error', error);
+	        } else {
+	            callback(false, body);
+	        }
+	        console.log('status code', status_code);
+	        console.log('headers', headers);
     });
+
+	
 
 }
 
 exports.createJSON = function(req, res, header, target){
 
-	var prom = new Promise(function(resolve, reject) {
+	// New version using Promisify ============================== //
 
-		exports.makeRequest(function(response){
-		 	if (true) {
-		    	resolve(response);
-		 	} else {
-		   	    reject('nooooo');
-		 	}
-		}, header[0]);
-	});
-	 
-	prom.then(function(data) {
-			// Filter the data returned from the server.
-	        
+	var makeRequestAsync = Promise.promisify(exports.makeRequest);
 
-	        var dataFiltered = filter(data);
-	        res.status(200).json({ length: dataFiltered.length, results: dataFiltered});
-	    })
-	    .catch(function(e) {
-	        console.log('error: ' + e);
-	    });
+	makeRequestAsync(header[0])
+		.then(function(data){
+			var dataFiltered = filter(data);
+			res.status(200).json({ length: dataFiltered.length, results: dataFiltered});
+		})
+		.catch(function(e){ console.log('error:', e); });
+
+	// ========================================================== //
+
 }
