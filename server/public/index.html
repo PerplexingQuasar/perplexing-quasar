@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DisplayBase</title>
+  <script type="text/javascript" src="js/vendor.min.js"></script>
+<!--==============================================================================-->
+<!-- CSS style will be loaded at the end -->
+<!--==============================================================================-->
+  <link id='main-css' rel="stylesheet" type="text/css" href="css/main.min.css">
+</head>
+<body>
+  <script type="text/javascript" src="js/displaybase.min.js"></script>
+  <!-- New App -->
+  <script>
+    $(function(){
+      var app = new AppModel();
+      var appView = new AppView({model:app});
+    });
+  </script>
+</body>
+</html>
