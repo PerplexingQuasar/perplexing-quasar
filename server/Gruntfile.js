@@ -7,13 +7,88 @@ module.exports = function(grunt) {
       main: {
         files: [
           // includes files within path
-          {expand: true, src: ['../app/collections/*'], dest: 'another/aa', cwd: 'app'}
+          {
+            expand: true, 
+            src: [
+            '../app/index.html',
+            ], 
+            dest: 'public/index.html'
+          }
 
         ],
       },
+    }, //copy
+
+
+  concat:{
+    options: {
+      seperator: ';'
     },
-    
-  });
+    app: {
+      src: [
+        '../app/models/*.js',
+        '../app/collections/*.js',
+        '../app/views/*.js',
+        '../app/data/library.js', //Take this out later on
+      ],
+      dest: 'public/js/displaybase.js'
+    },
+    vendor:{
+      src:[
+        '../app/bower_components/underscore/underscore.js',
+        '../app/bower_components/jquery/dist/jquery.js',
+        '../app/bower_components/backbone/backbone.js',
+        '../app/bower_components/bootstrap/dist/js/bootstrap.js',
+        '../app/lib/Smooth-Div-Scroll/js/source/*.js',
+        '../app/lib/headroom/*.js',
+      ],
+      dest: 'public/js/vendor.js'
+    }
+  }, //concat
+
+  uglify:{
+    options:{
+      banner: '/*! displaybase <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+    },
+    dist:{
+      files:{
+        'public/js/displaybase.min.js': ['<%= concat.app.dest %>'],
+        'public/js/vendor.min.js': ['<%= concat.vendor.dest %>'],
+      }
+    }
+  },
+
+  jshint: {
+      files: [
+        // Add filespec list here
+        'Gruntfile.js',
+        '../app/models/*.js',
+        '../app/views/*.js',
+        '../app/collections/*.js',
+        '../app/data/library.js', //Take this out later on
+      ],
+      options: {
+        force: 'true',
+        jshintrc: '.jshintrc'
+      }
+  },
+
+  cssmin: {
+    options: {
+
+    },
+    target:{
+      files: {
+        'public/css/main.min.css': [
+            '../app/bower_components/bootstrap/dist/css/bootstrap.min.css',
+            '../app/lib/Smooth-Div-Scroll/css/smoothDivScroll.css',
+            '../app/styles/*.css'
+          ]
+      }
+    }
+  },
+
+});
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -46,7 +121,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['copy']);
+  grunt.registerTask('build', ['jshint', 'concat', 'uglify', 'cssmin']);
 
 
   grunt.registerTask('upload', function(n) {
@@ -57,10 +132,6 @@ module.exports = function(grunt) {
       grunt.task.run([ 'server-dev' ]);
     }
   });
-
-  grunt.registerTask('deploy', [
-    'jshint', 'mochaTest', 'build', 'upload'
-  ]);
 
 
 };
