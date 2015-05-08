@@ -38,13 +38,8 @@ div.scrollingHotSpotRight
 {
 	min-width: 75px;
 	width: 10%;
-<<<<<<< HEAD
 	height: 166px;
-	background-image: url(../images/big_transparent.gif);
-=======
-	height: 253px;
 	background-image: url(../assets/images/big_transparent.gif);
->>>>>>> Modified front end to work from public folder in server.
 	background-repeat: repeat;
 	background-position: center center;
 	position: absolute;
