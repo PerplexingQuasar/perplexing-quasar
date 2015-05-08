@@ -17,47 +17,56 @@ exports.makeRequest = function(category, callback){
 	        } else {
 	            callback(false, body);
 	        }
-	        console.log('status code', status_code);
-	        console.log('headers', headers);
+	        // console.log('status code', status_code);
+	        // console.log('headers', headers);
     });
+}
 
-	
+exports.multipleRequests = function(categories, resultJSON, res){
+
+  // Promisify the request function ========================= //
+  var makeRequestAsync = Promise.promisify(exports.makeRequest);
+
+  // Multiple Promisify requests ============================ //
+
+  Promise.map(categories, function(gallery) {
+      return makeRequestAsync(gallery)
+              .then(function(data){
+                var dataFiltered = filter(data);
+                // increase the number of galleries (categories)
+                resultJSON.total++;
+                // set the new gallery into the header
+                resultJSON.header.push({'name': gallery});
+                // set the content for this gallery (category)
+                resultJSON.content[gallery] = dataFiltered;
+                // return the data (this data is not been used)
+                return dataFiltered;
+              })
+              .catch(function(e){ console.log('error:', e); });
+  }).then(function(dataArray) {
+      res.status(200).json({results: resultJSON});
+  }).catch(SyntaxError, function(e) {
+     console.log("Invalid JSON in file " + e.fileName + ": " + e.message);
+  });
+
+  // ========================================================== //
 
 }
 
-exports.createJSON = function(req, res, header, target){
-  console.log('header', header);
-	// New version using Promisify ============================== //
+exports.createJSON = function(req, res, categories, target){
 
-	var makeRequestAsync = Promise.promisify(exports.makeRequest);
-
-  var categoryName = header[0];
-
+  // The JSON Object to send to the client
   var resultJSON = {
+    total: 0, 
     settings: {
       contentWidth: 295,
       contentHeight: 166 
     },
+    header: [],
+    content: {}
+  };
 
-    header: [
-      {name: categoryName}
-    ],
-
-    content: {
-      'animation': []
-    }
-  } 
-
-	makeRequestAsync(header[0])
-		.then(function(data){
-			var dataFiltered = filter(data);
-      resultJSON.content['animation'].push(dataFiltered);
-
-      console.log('resultJSON',resultJSON);
-			res.status(200).json({ length: dataFiltered.length, results: resultJSON});
-		})
-		.catch(function(e){ console.log('error:', e); });
-
-	// ========================================================== //
+  // Invoke all the requests
+  exports.multipleRequests(categories, resultJSON, res); 
 
 }
