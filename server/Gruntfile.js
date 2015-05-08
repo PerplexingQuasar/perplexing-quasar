@@ -12,7 +12,8 @@ module.exports = function(grunt) {
             src: [
             '../app/index.html',
             ], 
-            dest: 'public/*'
+
+            dest: 'public/index.html'
           }
         ],
       },
@@ -27,7 +28,8 @@ module.exports = function(grunt) {
       src: [
         '../app/models/*.js',
         '../app/collections/*.js',
-        '../app/views/*.js'
+        '../app/views/*.js',
+        '../app/data/library.js', //Take this out later on
       ],
       dest: 'public/js/displaybase.js'
     },
