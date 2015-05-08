@@ -12,16 +12,9 @@
   <script type="text/javascript" src="js/displaybase.min.js"></script>
   <!-- New App -->
   <script>
-    $(document).ready(function(){
-      // make an ajax request once the dom is ready
-      $.ajax({
-        url: 'http://localhost:3000/api/vimeo',
-          success: function(vimeoData) {
-            data= vimeoData.results;
-            var app = new AppModel();
-            var appView = new AppView({model:app});
-          }
-      });
+    $(function(){
+      var app = new AppModel();
+      var appView = new AppView({model:app});
     });
   </script>
 </body>
