@@ -3,14 +3,27 @@
 var express = require('express');
 var router  = express.Router();
 var utils   = require('../helpers/utils');
-var vimeoHeader  = require('../integrations/integration-headers').vimeo; 
+var vimeoHeader  = require('../integrations/integration-headers').vimeo;
+// Bring the DB Model
+var RequestApi = require('../models/model.js');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   
+  // Fetch the database to serve the last JSON requested for the Vimeo API to the client
+  RequestApi.findOne({}, function(err, data){
+  	if (err) {
+  		console.log('Failed fetching the database');
+  		res.status(500).json( {error: 'Failed fetching the database'} );
+  	} else {
+  		var parsedData = JSON.parse(data.data);
+  		res.status(200).json( {results: parsedData} );
+  	}
+  });
+
   // invoke the createJSON function to return the data to the client (data, target)
-  var data = utils.createJSON(req, res, vimeoHeader, 'vimeo');
+  // var data = utils.createJSON(req, res, vimeoHeader, 'vimeo');
   // res.status(200).json({results: data});
 });
 
