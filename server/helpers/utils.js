@@ -26,15 +26,35 @@ exports.makeRequest = function(category, callback){
 }
 
 exports.createJSON = function(req, res, header, target){
-
+  console.log('header', header);
 	// New version using Promisify ============================== //
 
 	var makeRequestAsync = Promise.promisify(exports.makeRequest);
 
+  var categoryName = header[0];
+
+  var resultJSON = {
+    settings: {
+      contentWidth: 295,
+      contentHeight: 166 
+    },
+
+    header: [
+      {name: categoryName}
+    ],
+
+    content: {
+      'animation': []
+    }
+  } 
+
 	makeRequestAsync(header[0])
 		.then(function(data){
 			var dataFiltered = filter(data);
-			res.status(200).json({ length: dataFiltered.length, results: dataFiltered});
+      resultJSON.content['animation'].push(dataFiltered);
+
+      console.log('resultJSON',resultJSON);
+			res.status(200).json({ length: dataFiltered.length, results: resultJSON});
 		})
 		.catch(function(e){ console.log('error:', e); });
 
