@@ -1,6 +1,10 @@
 var Promise = require("bluebird");
 var Vimeo   = require("../integrations/vimeo/request-vimeo"); 
 var filter  = require("../integrations/vimeo/filter-vimeo");
+<<<<<<< HEAD
+=======
+// var mongoose = require('mongoose');
+>>>>>>> Created a MongoDB Database to store the request from the Vimeo API
 var RequestApi = require('../models/model.js');
 
 exports.makeRequest = function(category, callback){
