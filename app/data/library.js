@@ -7,14 +7,14 @@ var data ={
   },
 
   header: [
-    {id: 001, name: 'fantasy'},
-    {id: 002, name: 'romance'},
-    {id: 003, name: 'comedy'},
-    {id: 004, name: 'horror'}
+    {name: 'fantasy'},
+    {name: 'romance'},
+    {name: 'comedy'},
+    {name: 'horror'}
   ],
 
   content:{
-    001: [
+    'fantasy': [
       {
         thumbnail: 'assets/imgs/10870002.webp',
         title: "AAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -81,7 +81,7 @@ var data ={
         description: "dddddddddddddd",
       }
     ],
-    002: [
+    'romance': [
       {
         thumbnail: 'assets/imgs/11097186.webp',
         title: "EEEEEEEEEE",
@@ -153,7 +153,7 @@ var data ={
         description: "hhhhhhhhhhhhhhhhhhh",
       }
     ],
-    003: [
+    'comedy': [
       {
         thumbnail: 'assets/imgs/11379424.webp',
         title: "IIIIIIIIIIII",
@@ -255,7 +255,7 @@ var data ={
         description: "dddddddddddddd",
       }
     ],
-    004: [
+    'horror': [
       {
         thumbnail: 'assets/imgs/11570147.webp',
         title: "OMMMMMMM",
