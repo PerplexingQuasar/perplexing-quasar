@@ -7,7 +7,7 @@ div.scrollingHotSpotLeft
     and occupy 15% of the scrollable area (30% combined). Adjust it to your own taste. */
 	min-width: 75px;
 	width: 10%;
-	height: 253px;
+	height: 166px;
 	/* There is a big background image and it's used to solve some problems I experienced
     in Internet Explorer 6. */
 	/*background-image: url(../assets/images/big_transparent.gif);*/
@@ -38,7 +38,7 @@ div.scrollingHotSpotRight
 {
 	min-width: 75px;
 	width: 10%;
-	height: 253px;
+	height: 166px;
 	background-image: url(../assets/images/big_transparent.gif);
 	background-repeat: repeat;
 	background-position: center center;
