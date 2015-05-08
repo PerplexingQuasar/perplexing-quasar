@@ -22,6 +22,13 @@ var AppView = Backbone.View.extend({
     //asign the headroom to the DOM element.
     $(".headroom").headroom();
 
+    //Apply the settings value from data to the css. 
+    $('.content').css({ //for all DOM element of class '.content'
+      //create property/change values
+      'width': data.settings.contentWidth + 'px',
+      'height': data.settings.contentHeight + 'px'
+    });
+
     /////////////////////////////////////////////////
     //Initialize SmoothDivScroll to the DOM element
     /////////////////////////////////////////////////
@@ -32,14 +39,9 @@ var AppView = Backbone.View.extend({
 
     //Here we create append the link element to the html for dynamic css style types.
     //arguement should be a string, name of css file. 
-    this.loadCSS(data.cssStyle); 
+    //this.loadCSS(data.cssStyle); 
 
-    //Apply the settings value from data to the css. 
-    $('.content').css({ //for all DOM element of class '.content'
-      //create property/change values
-      'width': data.settings.contentWidth + 'px',
-      'height': data.settings.contentHeight + 'px'
-    });
+
   },
 
   render: function() {
