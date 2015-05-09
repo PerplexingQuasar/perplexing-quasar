@@ -37,8 +37,8 @@ h3{
 
 #popup  {
   width:313px;
-  height:282px;
-  background-color: #444;
+  height:auto;
+  background-color: #DB2A2A;
   border-radius: 15px;
   position: absolute;
   top: 267px;
@@ -56,15 +56,17 @@ h3{
 }
 
 #popup-header {
-  background-color: #444;
-  height: 42px;
+  position: relative;
+  top: -5px;
+  background-color: #DB2A2A;
+  height: 30px;
   color: #fff;
-  padding: 10px;
+  padding: 0 10px 0 10px;
 }
 
 #popup-content {
   background-color: #fff;
-  height: 220px;
+  height: auto;
   padding: 10px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -72,24 +74,24 @@ h3{
 }
 
 .arrow-to-left {
-  top: 80px;
+  top: 23px;
   left: -30px;
   position: relative;
   width:  0;
   height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
   border-right: 27px solid white;
 }
 
 .arrow-to-right {
-  top: 80px;
+  top: 23px;
   left: 313px;
   position: relative;
   width:  0;
   height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
   border-left: 27px solid white;
 }
 
