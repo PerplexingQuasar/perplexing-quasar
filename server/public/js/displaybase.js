@@ -182,7 +182,7 @@ var ContentView = Backbone.View.extend({
   template: _.template(
       '<span class="content-img">' +
         //Git url link for the content
-        '<a class="content-link" href=<%- contentUrl %>>' +
+        '<a target="_blank" class="content-link" href=<%- contentUrl %>>' +
           //Give alt and src data
           '<img class="img" src=<%- imgUrl %>>' +
         '</a>' +
@@ -250,7 +250,7 @@ var PopView = Backbone.View.extend({
 
   template: _.template(
        "<span id='arrow'></span>" +
-       "<div id='popup-header'><%- popupHeader %></div>" +
+       "<div id='popup-header'><h4><%- popupHeader %></h4></div>" +
        "<div id='popup-content'><%- popupContent %></div>"
     ),
 
@@ -263,8 +263,9 @@ var PopView = Backbone.View.extend({
     //Removes previous popup if one exists
     $('#popup').remove();
 
+    console.log(this.model);
     this.$el.html( this.template({
-      popupHeader: this.model.get('title'),
+      popupHeader: this.model.get('name'),
       popupContent: this.model.get('description')
     }));
 

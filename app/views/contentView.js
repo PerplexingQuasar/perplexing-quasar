@@ -5,7 +5,7 @@ var ContentView = Backbone.View.extend({
   template: _.template(
       '<span class="content-img">' +
         //Git url link for the content
-        '<a class="content-link" href=<%- contentUrl %>>' +
+        '<a target="_blank" class="content-link" href=<%- contentUrl %>>' +
           //Give alt and src data
           '<img class="img" src=<%- imgUrl %>>' +
         '</a>' +
