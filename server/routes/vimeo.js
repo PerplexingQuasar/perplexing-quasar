@@ -7,6 +7,9 @@ var vimeoHeader  = require('../integrations/integration-headers').vimeo;
 // Bring the DB Model
 var RequestApi = require('../models/model.js');
 
+// Update the DB
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,8 +20,13 @@ router.get('/', function(req, res, next) {
   		console.log('Failed fetching the database');
   		res.status(500).json( {error: 'Failed fetching the database'} );
   	} else {
-  		var parsedData = JSON.parse(data.data);
-  		res.status(200).json( {results: parsedData} );
+  		if (data === null) {
+  			utils.createJSON(req, res, vimeoHeader, 'vimeo');
+  			res.status(200).json( {message: 'The server is been updated. Try again in few minutes'} );
+ 		} else {
+	  		var parsedData = JSON.parse(data.data);
+	  		res.status(200).json( {results: parsedData} );	
+ 		}
   	}
   });
 

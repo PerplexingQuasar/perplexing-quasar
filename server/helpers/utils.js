@@ -1,7 +1,6 @@
 var Promise = require("bluebird");
 var Vimeo   = require("../integrations/vimeo/request-vimeo"); 
 var filter  = require("../integrations/vimeo/filter-vimeo");
-// var mongoose = require('mongoose');
 var RequestApi = require('../models/model.js');
 
 exports.makeRequest = function(category, callback){
@@ -55,14 +54,46 @@ exports.multipleRequests = function(categories, resultJSON, res){
         api: 'Vimeo'
       });
 
-      // Save the model into the DB
-      newRequestApi.save(function(err, result){
-        if (err) { 
-          console.log('Failed to save the request in the Database');
+      // Fetch the Database to check if there's any request stored
+      RequestApi.findOne({}, function(err, result){
+        if (err) {
+          console.log('Failed to fecth the database');
         } else {
-          console.log('Request successfuly saved in the Database ');
+          
+          // If the request doesn't exist
+          if (result === null) {
+            // Create the new request model
+            var newRequestApi = new RequestApi({
+              data: dataString,
+              api: 'Vimeo'
+            });
+
+            // Save the new model into the DB
+            newRequestApi.save(function(err, result){
+              if (err) { 
+                console.log('Failed to SAVE the request in the Database');
+              } else {
+                console.log('Request successfuly SAVED in the Database ');
+              }
+            });
+          } 
+
+          // If the request exists, just update with the new data
+          else {
+            // Update the data
+            result.data = dataString;
+            // Save it
+            result.save(function(err, result){
+              if (err) { 
+                console.log('Failed to UPDATE the request in the Database');
+              } else {
+                console.log('Request successfuly UPDATED in the Database ');
+              }
+            })
+          }
+
         }
-      });
+      })
 
   }).catch(SyntaxError, function(e) {
      console.log("Invalid JSON in file " + e.fileName + ": " + e.message);
@@ -88,4 +119,8 @@ exports.createJSON = function(req, res, categories, target){
   // Invoke all the requests
   exports.multipleRequests(categories, resultJSON, res); 
 
+};
+
+exports.updateRequest = function(){
+  // setInterval(fun);
 }
