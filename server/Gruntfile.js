@@ -12,6 +12,7 @@ module.exports = function(grunt) {
             src: [
             '../app/index.html',
             ], 
+
             dest: 'public/*'
           }
         ],
