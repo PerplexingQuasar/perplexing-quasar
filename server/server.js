@@ -4,11 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var vimeo = require('./routes/vimeo');
 
 var app = express();
+
+// DATABASE Connection (MongoDB)
+mongoose.connect('mongodb://localhost/displaybase');
+// Create the Schema
+var schemas = require('./models/model.js');
+
+//==========================//
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
