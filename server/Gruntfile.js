@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             '../app/index.html',
             ], 
 
-            dest: 'public/index.html'
+            dest: 'public/*'
           }
         ],
       },

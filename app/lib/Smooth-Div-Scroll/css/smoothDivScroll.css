@@ -39,7 +39,7 @@ div.scrollingHotSpotRight
 	min-width: 75px;
 	width: 10%;
 	height: 166px;
-	background-image: url(../images/big_transparent.gif);
+	background-image: url(../assets/images/big_transparent.gif);
 	background-repeat: repeat;
 	background-position: center center;
 	position: absolute;
