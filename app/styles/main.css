@@ -59,7 +59,7 @@ hr{
   position: relative;
   top: -5px;
   background-color: #DB2A2A;
-  height: 30px;
+  height: auto;
   color: #fff;
   padding: 0 10px 0 10px;
 }
@@ -70,6 +70,10 @@ hr{
   padding: 10px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+.tags{
+  color: grey;
 }
 
 .hidden {

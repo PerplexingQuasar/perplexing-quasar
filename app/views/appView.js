@@ -4,11 +4,11 @@ var AppView = Backbone.View.extend({
   className: 'container-fluid',
 
   initialize: function(){
-    this.render();
     window.watch = new this.Watch(100,1000,function(){
       $('#popup').remove();
       window.watch.reset();
     });
+    this.render();
 
     /////////////////////////////////////////////////
     //Initialize and set options for our header
@@ -62,9 +62,6 @@ var AppView = Backbone.View.extend({
     $('.header-buffer').append(newHeaderView.render());
 
 
-
-
-//this.watch = new this.Watch(100,5000,function(){console.log(this.currentTime);});
   },
   //make a timer for the popup
   Watch: function(cycleTime, timeLimit, callback) {
@@ -105,6 +102,7 @@ var AppView = Backbone.View.extend({
     // Increment seconds to the cronometer
     this.addTime = function(){
         this.currentTime += cycleTime;
+        // console.log(this.currentTime);
         if (this.currentTime >= this.timeLimit ) {
           this.do();
         }
