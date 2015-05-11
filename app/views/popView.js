@@ -12,9 +12,9 @@ var PopView = Backbone.View.extend({
   template: _.template(
        "<span id='arrow'></span>" +
        "<div id='popup-header'><h4><%- popupHeader %></h4></div>" +
-       "<div id='popup-content'><%- popupContent %>" +
+       "<div id='popup-content'>Description: <%- popupContent %>" +
           "<hr>" +
-          "Tags: <%- tags %>" +
+          "<span class='tags'>Tags: <%- tags %></span>" +
        "</div>"
     ),
 
@@ -35,7 +35,6 @@ var PopView = Backbone.View.extend({
       contentText += '...';
     }
 
-    console.log(this.model);
     this.$el.html( this.template({
       popupHeader: this.model.get('name'),
       popupContent: contentText,
@@ -55,10 +54,10 @@ var PopView = Backbone.View.extend({
     // Set up the function that will remove the .hidden class
     var openPopup = function(e){
       $popup.removeClass('hidden');
-    }
+    };
 
     // window.cancel will store the SetTimeOut id to remove it from the event loop. The popup will open after 0.5 seconds.
-    window.cancel = setTimeout(openPopup.bind(this, e), 500);
+    window.cancel = setTimeout(openPopup.bind(this, e), 200);
 
     // Invoke the function that will define the popup position
     this.popPosition(e,$popup);
@@ -120,22 +119,20 @@ var PopView = Backbone.View.extend({
     $popup.css(cssObj);
 
     //EVENT LISTENERS on contentview
-    $(e.currentTarget).on('mouseleave', function(e){
-      e.preventDefault();
-      window.watch.start();
-    });
     $(e.currentTarget).on('mouseenter', function(e){
       e.preventDefault();
       window.watch.reset();
+    });
+    $(e.currentTarget).on('mouseleave', function(e){
+      e.preventDefault();
+      window.watch.start();
     });
   },
   //functions triggered by events on popupview
   enter: function(){
     window.watch.reset();
-    console.log("entered popup");
   },
   leave: function(){
     window.watch.start();
-    console.log("left popup");
   }
 });
