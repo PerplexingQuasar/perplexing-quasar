@@ -4,7 +4,7 @@ var HeaderView = Backbone.View.extend({
     '<a href=<%- url %> ><h4 id="display-title"><span id="displaybase">DisplayBase</span>' +
     '<span id="js">.js</span></h4></a>' +
     '<a href="https://github.com/PerplexingQuasar/perplexing-quasar">' +
-      '<i class="fa fa-github"></i>' +
+      '<img class="git-icon" src="assets/images/gitIcon.png">' +
     '</a>'
     ),
   className: 'headroom',

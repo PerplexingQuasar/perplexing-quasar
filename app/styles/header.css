@@ -29,3 +29,13 @@
 .headroom--unpinned {
     transform: translateY(-100%);
 }
+
+.git-icon{
+  display: inline-block;
+  width: 45px;
+  height: auto;
+
+  position: relative;
+  left: 84%;
+  top: -10%;
+}

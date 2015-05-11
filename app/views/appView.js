@@ -61,6 +61,9 @@ var AppView = Backbone.View.extend({
     var newHeaderView = new HeaderView();
     $('.header-buffer').append(newHeaderView.render());
 
+    //Footer
+    $('.container-fluid').append('<div class="footer-buffer"></div>');
+
 
   },
   //make a timer for the popup

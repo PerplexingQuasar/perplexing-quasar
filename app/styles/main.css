@@ -22,6 +22,12 @@ hr{
   background-color: lightgrey;
 }
 
+.footer-buffer{
+  height: 250px;
+  z-index: -1;
+  background-color: lightgrey;
+}
+
 .row{
   background-color: lightgrey;
   height: 250px;
