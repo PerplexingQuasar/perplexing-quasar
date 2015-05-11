@@ -12,7 +12,10 @@ var PopView = Backbone.View.extend({
   template: _.template(
        "<span id='arrow'></span>" +
        "<div id='popup-header'><h4><%- popupHeader %></h4></div>" +
-       "<div id='popup-content'><%- popupContent %></div>"
+       "<div id='popup-content'><%- popupContent %>" +
+          "<hr>" +
+          "Tags: <%- tags %>" +
+       "</div>"
     ),
 
   initialize: function(options){
@@ -24,10 +27,19 @@ var PopView = Backbone.View.extend({
     //Removes previous popup if one exists
     $('#popup').remove();
 
+    var textLength = 300;
+
+    var contentText = this.model.get('description');
+    if(contentText.length > textLength){
+      contentText = contentText.slice(0,textLength);
+      contentText += '...';
+    }
+
     console.log(this.model);
     this.$el.html( this.template({
       popupHeader: this.model.get('name'),
-      popupContent: this.model.get('description')
+      popupContent: contentText,
+      tags: this.model.get('tags').join(', ')
     }));
 
     $('body').append(this.$el);

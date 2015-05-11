@@ -1,3 +1,15 @@
+h3{
+  font-weight: bold;
+  margin: 0 0 10px 15px;
+  padding: 10px 0 0 15px;
+}
+
+hr{
+  display: block; height: 1px;
+  border: 0; border-top: 1px solid black;
+  margin: 1em 0; padding: 0; 
+}
+
 .container-fluid{
   background-color: lightgrey;
   padding-left: 0;
@@ -15,11 +27,6 @@
   height: 250px;
 }
 
-h3{
-  font-weight: bold;
-  margin: 0 0 10px 15px;
-  padding: 10px 0 0 15px;
-}
 
 .content{
   background-color: red;
@@ -45,15 +52,9 @@ h3{
   left: 726px;
   z-index: 1;
   box-shadow: 0 0 40px black;
+  overflow: hidden;
 }
 
-.hidden {
-  display: none;
-}
-
-.show {
-  display: auto;
-}
 
 #popup-header {
   position: relative;
@@ -70,9 +71,15 @@ h3{
   padding: 10px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-
 }
 
+.hidden {
+  display: none;
+}
+
+.show {
+  display: auto;
+}
 .arrow-to-left {
   top: 23px;
   left: -30px;
