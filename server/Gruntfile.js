@@ -3,26 +3,30 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    copy: {
-      main: {
-        files: [
-          // includes files within path
-          {
-            expand: true, 
-            src: [
-            '../app/index.html',
-            ], 
+    // copy: {
+    //   main: {
+    //     files: [
+    //       // includes files within path
+    //       {
+    //         expand: true, 
+    //         src: [
+    //         '../app/index.html',
+    //         ], 
 
-            dest: 'public/*'
-          }
-        ],
-      },
-    }, //copy
+    //         dest: 'public/*'
+    //       }
+    //     ],
+    //   },
+    // }, //copy
 
 
   concat:{
     options: {
       seperator: ';'
+    },
+    index:{
+      src: ['../app/index.html'],
+      dest: 'public/index.html'
     },
     app: {
       src: [
@@ -91,8 +95,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-remove');
+  // grunt.loadNpmTasks('grunt-contrib-copy');
+  // grunt.loadNpmTasks('grunt-remove');
   //grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
