@@ -10,7 +10,9 @@ var RowView = Backbone.View.extend({
     // Memorize the view scope
     var that = this;
     // generate inside the "el" the template nodes (with the gallery class)
-    this.$el.html(this.template( {rowName: this.model.get('name')} ) );
+    
+    var capName = this.model.get('name')[0].toUpperCase()+this.model.get('name').slice(1);
+    this.$el.html(this.template( {rowName: capName} ) );
 
     // iterate over all the collection and for each content (model)
     this.model.get('contentCollection').each(function(content){
