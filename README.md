@@ -39,19 +39,15 @@ From within the app directory:
 
 ```sh
 sudo npm install -g bower
-npm install
 bower install
 ```
 From within the server directory:
 
 ```sh
 sudo npm install
+grunt build
 ```
-
-### Roadmap
-
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
+also remember to set your 
 
 ## Contributing
 
