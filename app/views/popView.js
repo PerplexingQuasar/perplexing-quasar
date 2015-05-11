@@ -14,7 +14,7 @@ var PopView = Backbone.View.extend({
        "<div id='popup-header'><h4><%- popupHeader %></h4></div>" +
        "<div id='popup-content'><%- popupContent %>" +
           "<hr>" +
-          "Tags: <%- tags %>" +
+          "Tags: " +
        "</div>"
     ),
 
@@ -39,7 +39,7 @@ var PopView = Backbone.View.extend({
     this.$el.html( this.template({
       popupHeader: this.model.get('name'),
       popupContent: contentText,
-      tags: this.model.get('tags').join(', ')
+      // tags: this.model.get('tags').join(', ')
     }));
 
     $('body').append(this.$el);
