@@ -63,6 +63,8 @@ var AppView = Backbone.View.extend({
 
     //Footer
     $('.container-fluid').append('<div class="footer-buffer"></div>');
+    var newFooterView = new FooterView();
+    $('.footer-buffer').append(newFooterView.render());
 
 
   },
