@@ -1,14 +1,14 @@
 # perplexing-quasar
-Around a black hole, sometimes energy happens
-# Project Name
+A quasar is a compact region in the center of a massive galaxy surrounding a central supermassive black hole.  Some of their properties are perplexing.
+# DisplayBase
 
-> Pithy project description
+> DisplayBase is an open-source platform to display content and associated data in a carousel slider and popup display.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: PerplexingQuasar
+  - __Scrum Master__: Eric Outterson
+  - __Development Team Members__: Elvio Cavalcante, Ken Kang, Jimmy Tjandra
 
 ## Table of Contents
 
@@ -22,13 +22,12 @@ Around a black hole, sometimes energy happens
 
 ## Usage
 
-> Some usage instructions
+> To use locally, install dependencies and type the command "npm start" inside the server directory
 
 ## Requirements
-
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
+- express 4
+- Grunt
+- Mongo
 - etc
 - etc
 
@@ -36,12 +35,17 @@ Around a black hole, sometimes energy happens
 
 ### Installing Dependencies
 
-From within the root directory:
+From within the app directory:
 
 ```sh
 sudo npm install -g bower
 npm install
 bower install
+```
+From within the server directory:
+
+```sh
+sudo npm install
 ```
 
 ### Roadmap
