@@ -8,7 +8,7 @@ A quasar is a compact region in the center of a massive galaxy surrounding a cen
 
   - __Product Owner__: PerplexingQuasar
   - __Scrum Master__: Eric Outterson
-  - __Development Team Members__: Elvio Cavalcante, Ken Kang, Jimmy Tjandra
+  - __Development Team Members__: Elvio Cavalcante, Ken Kang, Eric Outterson, Jimmy Tjandra
 
 ## Table of Contents
 
