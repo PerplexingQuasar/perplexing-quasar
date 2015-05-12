@@ -34,7 +34,7 @@ var AppView = Backbone.View.extend({
     /////////////////////////////////////////////////
     $('.gallery').smoothDivScroll({
         manualContinuousScrolling: true
-      }).smoothDivScroll('move', 30).smoothDivScroll('move', -30);
+      }).smoothDivScroll('move', -data.settings.contentWidth-26).smoothDivScroll('move', data.settings.contentWidth);
 
 
     //Here we create append the link element to the html for dynamic css style types.
